@@ -20,9 +20,9 @@ class Tableau
 		puts #
 		puts "#{ (" " * 8) + "A" + "  B" + "  C" }"
 		puts "#{ (" " * 6) + "-----------" }"
-		puts "#{ (" " * 4) + "1" + " |" + " " + @a + "  " + @d + "  " + @g + " |" }"
-		puts "#{ (" " * 4) + "2" + " |" + " " + @b + "  " + @e + "  " + @h + " |" }"
-		puts "#{ (" " * 4) + "3" + " |" + " " + @c + "  " + @f + "  " + @i + " |" }"
+		puts "#{ (" " * 4) + "1" + " |" + " " + @a.colorize(:red) + "  " + @d.colorize(:red) + "  " + @g.colorize(:red) + " |" }"
+		puts "#{ (" " * 4) + "2" + " |" + " " + @b.colorize(:red) + "  " + @e.colorize(:red) + "  " + @h.colorize(:red) + " |" }"
+		puts "#{ (" " * 4) + "3" + " |" + " " + @c.colorize(:red) + "  " + @f.colorize(:red) + "  " + @i.colorize(:red) + " |" }"
 		puts "#{ (" " * 6) + "-----------" }"
 	end
 end
