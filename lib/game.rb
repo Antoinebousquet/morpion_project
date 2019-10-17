@@ -1,35 +1,45 @@
+require_relative 'tableau'
+
 class Game
-	attr_accessor :tr
 
+	# Initialiser le jeu avec le nom des deux joueurs
 	def initialize
-		# puts "salut, Joueur1 entre ton pseudo"
-		# user1 = gets.chomp
-		# puts "A ton tour d'entrer ton pseudo Joueur2"
-		# user2 = gets.chomp
-		# puts "#{user1},#{user2} vous allez combatre"
-		# puts #
-	end
-
-	def choix
-		# Compteur provisoire
-		j = 0 
 
 		# Tableau pour vérifier les cases occupées
 		@case_array = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
 
-		# Variables
-		@a = " "
-		@b = " "
-		@c = " "
-		@d = " "
-		@e = " "
-		@f = " "
-		@g = " "
-		@h = " "
-		@i = " "
+		# On initialise un tableau
+		@tableau_de_la_partie = Tableau.new
+
+		# Initialiser le jeu
+		puts "Bienvenue dans le jeu hautement stratégique du morpion !"
+		puts #
+		puts #
+		puts #
+		puts "Quel est le nom du premier joueur ?"
+		@player_1 = gets.chomp
+		puts #
+		puts "Et le nom du second joueur ?"
+		@player_2 = gets.chomp
+		puts #
+		puts "#{@player_1}, #{@player_2}, bon jeu à tous les deux !"
+		puts #
+
+		# On affiche un tableau vide
+		@tableau_de_la_partie.show_game
+	end
+
+	def choix
+		# Compteur de tour
+		j = 0 
 
 		# Boucle de choix
 		while j < 9
+
+			# Pour faire de la place
+			puts #
+			puts #
+			puts #
 
 			# Tout du 1er joueur
 			if j % 2 == 0
@@ -43,37 +53,36 @@ class Game
 				end
 
 					if choix == "A1"
-						@a = "X"
+						@tableau_de_la_partie.a = "X"
 					elsif choix == "A2"
-						@b = "X"
+						@tableau_de_la_partie.b = "X"
 					elsif choix == "A3"
-						@c = "X"
+						@tableau_de_la_partie.c = "X"
 					elsif choix == "B1"
-						@d = "X"
+						@tableau_de_la_partie.d = "X"
 					elsif choix == "B2"
-						@e = "X"
+						@tableau_de_la_partie.e = "X"
 					elsif choix == "B3"
-						@f = "X"
+						@tableau_de_la_partie.f = "X"
 					elsif choix == "C1"
-						@g = "X"
+						@tableau_de_la_partie.g = "X"
 					elsif choix == "C2"
-						@h = "X"
+						@tableau_de_la_partie.h = "X"
 					elsif choix == "C3"
-						@i = "X"
+						@tableau_de_la_partie.i = "X"
 					end
 
 				@case_array.delete(choix)
-
-				puts "#{ " " * 5 + "A" + "B" + "C" }"
-				puts "#{ (" " * 4) + "1" + @a + @d + @g }"
-				puts "#{ (" " * 4) + "2" + @b + @e + @h }"
-				puts "#{ (" " * 4) + "3" + @c + @f + @i }"
+				@tableau_de_la_partie.show_game
 				
 				j += 1
 
 			if 
-				(@a == "X" && @b == "X" && @c == "X") || (@a == "X" && @d == "X" && @g == "X") || (@d == "X" && @e == "X" && @f == "X") || (@g == "X" && @h == "X" && @i == "X") || (@b == "X" && @h == "X" && @e == "X") || (@c == "X" && @f == "X" && @i == "X") || (@a == "X" && @e == "X" && @i == "X") || (@c == "X" && @e == "X" && @i == "X") 
-				puts "Tu as gagné J1 !"
+				(@tableau_de_la_partie.a == "X" && @tableau_de_la_partie.b == "X" && @tableau_de_la_partie.c == "X") || (@tableau_de_la_partie.a == "X" && @tableau_de_la_partie.d == "X" && @tableau_de_la_partie.g == "X") || (@tableau_de_la_partie.d == "X" && @tableau_de_la_partie.e == "X" && @tableau_de_la_partie.f == "X") || (@tableau_de_la_partie.g == "X" && @tableau_de_la_partie.h == "X" && @tableau_de_la_partie.i == "X") || (@tableau_de_la_partie.b == "X" && @tableau_de_la_partie.h == "X" && @tableau_de_la_partie.e == "X") || (@tableau_de_la_partie.c == "X" && @tableau_de_la_partie.f == "X" && @tableau_de_la_partie.i == "X") || (@tableau_de_la_partie.a == "X" && @tableau_de_la_partie.e == "X" && @tableau_de_la_partie.i == "X") || (@tableau_de_la_partie.c == "X" && @tableau_de_la_partie.e == "X" && @tableau_de_la_partie.i == "X") 
+				puts #
+				puts #
+				puts #
+				puts "Bravo #{@player_1}, tu as gagné !"
 				break
 			end
 
@@ -89,37 +98,36 @@ class Game
 				end
 
 					if choix == "A1"
-						@a = "O"
+						@tableau_de_la_partie.a = "O"
 					elsif choix == "A2"
-						@b = "O"
+						@tableau_de_la_partie.b = "O"
 					elsif choix == "A3"
-						@c = "O"
+						@tableau_de_la_partie.c = "O"
 					elsif choix == "B1"
-						@d = "O"
+						@tableau_de_la_partie.d = "O"
 					elsif choix == "B2"
-						@e = "O"
+						@tableau_de_la_partie.e = "O"
 					elsif choix == "B3"
-						@f = "O"
+						@tableau_de_la_partie.f = "O"
 					elsif choix == "C1"
-						@g = "O"
+						@tableau_de_la_partie.g = "O"
 					elsif choix == "C2"
-						@h = "O"
+						@tableau_de_la_partie.h = "O"
 					elsif choix == "C3"
-						@i = "O"
+						@tableau_de_la_partie.i = "O"
 					end
 
 				@case_array.delete(choix)
-
-				puts "#{ " " * 5 + "A" + "B" + "C" }"
-				puts "#{ (" " * 4) + "1" + @a + @d + @g }"
-				puts "#{ (" " * 4) + "2" + @b + @e + @h }"
-				puts "#{ (" " * 4) + "3" + @c + @f + @i }"
+				@tableau_de_la_partie.show_game
 
 				j += 1
 
 				if 
-					(@a == "O" && @b == "O" && @c == "O") || (@a == "O" && @d == "O" && @g == "O") || (@d == "O" && @e == "O" && @f == "O") || (@g == "O" && @h == "O" && @i == "O") || (@b == "O" && @h == "O" && @e == "O") || (@c == "O" && @f == "O" && @i == "O") || (@a == "O" && @e == "O" && @i == "O") || (@c == "O" && @e == "O" && @i == "O") 
-					puts "Tu as gagné J2 !"
+					(@tableau_de_la_partie.a == "O" && @tableau_de_la_partie.b == "O" && @tableau_de_la_partie.c == "O") || (@tableau_de_la_partie.a == "O" && @tableau_de_la_partie.d == "O" && @tableau_de_la_partie.g == "O") || (@tableau_de_la_partie.d == "O" && @tableau_de_la_partie.e == "O" && @tableau_de_la_partie.f == "O") || (@tableau_de_la_partie.g == "O" && @tableau_de_la_partie.h == "O" && @tableau_de_la_partie.i == "O") || (@tableau_de_la_partie.b == "O" && @tableau_de_la_partie.h == "O" && @tableau_de_la_partie.e == "O") || (@tableau_de_la_partie.c == "O" && @tableau_de_la_partie.f == "O" && @tableau_de_la_partie.i == "O") || (@tableau_de_la_partie.a == "O" && @tableau_de_la_partie.e == "O" && @tableau_de_la_partie.i == "O") || (@tableau_de_la_partie.c == "O" && @tableau_de_la_partie.e == "O" && @tableau_de_la_partie.i == "O") 
+					puts #
+					puts #
+					puts #
+					puts "Bravo #{@player_2}, tu as gagné !"
 				break
 				end
 
