@@ -9,3 +9,5 @@ game_1 = Game.new
 
 game_1.choix
 
+game_1.reinitialize
+
